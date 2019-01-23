@@ -3,6 +3,10 @@ import dash_bootstrap_components as dbc
 import dash_core_components as dcc
 import dash_html_components as html
 
+app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
+server = app.server
+
+
 navbar = dbc.NavbarSimple(
     children=[
         dbc.NavItem(dbc.NavLink("About", href="/about")),
@@ -59,18 +63,36 @@ odio dui."""
     className="mt-4",
 )
 
-datascience = dcc.Graph(id='example2',
-        figure={
-            'data': [
-                {'x': [1, 2, 3, 4, 5], 'y': [3, 5, 9, 3, 4], 'type': 'line', 'name': 'Boats'},
-                {'x': [1, 2, 3, 4, 5], 'y': [6, 5, 7, 1, 9], 'type': 'line', 'name': 'Cars'},
-            ],
-            'layout': {
-                'title': 'Basic Dash Example'
-            }
-        })
+datascience = dbc.Container(
+    [
+        dbc.Row(
+            [
+                dbc.Col(
+                    [html.H2("A simple graph"),
+                     html.P("""This simple graph is here to demonstrate that you can use
+                    dash and bootstap to create analytical web applications with style. There are
+                   a few libraries that help accomplish this. Dash-bootstrap-components contains the
+                   modules required for bootstrap styling, dash and dash core components along with dash html
+                   contain the rest needed."""),
+                     dbc.Button("about", color="secondary"),
+                    ],md=4,
+                    ),
+                dbc.Col(
+                    [html.H2("Graph"),
+                             dcc.Graph(id='example2',
+                                figure={
+                                    'data': [
+                                        {'x': [1, 2, 3, 4, 5], 'y': [3, 5, 9, 3, 4], 'type': 'line', 'name': 'Boats'},
+                                        {'x': [1, 2, 3, 4, 5], 'y': [6, 5, 7, 1, 9], 'type': 'line', 'name': 'Cars'},
+                                    ],
+                                    
+                                })
+                        ])
+            ])
+ 
+    ], className='mt-4')
 
-app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
+
 
 app.layout = html.Div([navbar, dcc.Location(id='url', refresh=False),html.Div(id='page-content')])
 
@@ -86,4 +108,4 @@ def display_page(pathname):
 
 
 if __name__ == "__main__":
-    app.run_server()
+    app.run_server(debug=True)
