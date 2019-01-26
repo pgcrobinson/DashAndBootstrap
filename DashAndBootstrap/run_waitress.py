@@ -3,3 +3,4 @@ from waitress import serve
 from app import server
 
 serve(server,host="0.0.0.0",port=os.environ["PORT"])
+#serve(server,arg_path_positional='0.0.0.0', port=8080)

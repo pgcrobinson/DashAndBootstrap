@@ -30,6 +30,9 @@
     <Compile Include="app.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="header.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="run_waitress.py">
       <SubType>Code</SubType>
     </Compile>
@@ -46,12 +49,12 @@
     </Interpreter>
   </ItemGroup>
   <ItemGroup>
-    <Content Include=".deployment" />
     <Content Include=".gitignore" />
-    <Content Include="deploy.cmd" />
+    <None Include="DashAndBootstrap - Web Deploy1.pubxml" />
+    <None Include="DashAndBootstrap2 - Web Deploy.pubxml" />
+    <Content Include="web.config" />
     <None Include="DashAndBootstrap - Web Deploy.pubxml" />
     <Content Include="requirements.txt" />
-    <Content Include="web.config" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.Web.targets" />
   <!-- Specify pre- and post-build commands in the BeforeBuild and 

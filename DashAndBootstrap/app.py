@@ -1,3 +1,4 @@
+import os
 import dash
 import dash_bootstrap_components as dbc
 import dash_core_components as dcc
@@ -10,6 +11,7 @@ server = app.server
 navbar = dbc.NavbarSimple(
     children=[
         dbc.NavItem(dbc.NavLink("About", href="/about")),
+        dbc.NavItem(dbc.NavLink("Contact", href="/contact")),
         dbc.DropdownMenu(
             nav=True,
             in_navbar=True,
@@ -22,7 +24,7 @@ navbar = dbc.NavbarSimple(
             ],
         ),
     ],
-    brand="PGC Data Designs",
+    brand="PGC Data Analysis",
     brand_href="/",
     sticky="top",
 )
@@ -107,5 +109,3 @@ def display_page(pathname):
         return noPage
 
 
-if __name__ == "__main__":
-    app.run_server(debug=True)
