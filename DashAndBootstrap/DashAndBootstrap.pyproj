@@ -30,9 +30,6 @@
     <Compile Include="app.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="header.py">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="run_waitress.py">
       <SubType>Code</SubType>
     </Compile>
