@@ -4,14 +4,23 @@ import dash_bootstrap_components as dbc
 import dash_core_components as dcc
 import dash_html_components as html
 
+PLOTLY_LOGO = "https://images.plot.ly/logo/new-branding/plotly-logomark.png"
+
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 server = app.server
 
 
-navbar = dbc.NavbarSimple(
+navbar =dbc.NavbarSimple(
     children=[
-        dbc.NavItem(dbc.NavLink("About", href="/about")),
-        dbc.NavItem(dbc.NavLink("Contact", href="/contact")),
+        #dbc.Row(
+        #        [
+        #            dbc.Col(html.Img(src=PLOTLY_LOGO, height="30px")),
+        #            dbc.Col(dbc.NavbarBrand("PGC Data Designs", className="ml-2")),
+        #        ],
+        #        align="center",
+        #        no_gutters=True,
+        #    ),
+        
         dbc.DropdownMenu(
             nav=True,
             in_navbar=True,
@@ -23,11 +32,15 @@ navbar = dbc.NavbarSimple(
                 dbc.DropdownMenuItem("Predictive", href="/predictive"),
             ],
         ),
+        dbc.NavItem(dbc.NavLink("About", href="/about")),
+        dbc.NavItem(dbc.NavLink("Contact", href="/contact")),
     ],
     brand="PGC Data Analysis",
     brand_href="/",
     sticky="top",
+    fluid = True
 )
+
 
 analytics = dbc.Container(
     [
@@ -65,7 +78,7 @@ odio dui."""
     className="mt-4",
 )
 
-datascience = dbc.Container(
+datascience = html.Div(
     [
         dbc.Row(
             [
@@ -77,7 +90,7 @@ datascience = dbc.Container(
                    modules required for bootstrap styling, dash and dash core components along with dash html
                    contain the rest needed."""),
                      dbc.Button("about", color="secondary"),
-                    ],md=4,
+                    ],md=4,width={"size": 3,  "offset": 1},
                     ),
                 dbc.Col(
                     [html.H2("Graph"),
@@ -89,8 +102,8 @@ datascience = dbc.Container(
                                     ],
                                     
                                 })
-                        ])
-            ])
+                        ],width={"size": 6 },)
+            ], )
  
     ], className='mt-4')
 
@@ -107,5 +120,8 @@ def display_page(pathname):
         return datascience
     else:
         return noPage
+
+if __name__ == '__main__':
+    app.run_server(debug=True)
 
 
